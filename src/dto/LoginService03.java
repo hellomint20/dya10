@@ -1,14 +1,15 @@
 package dto;
 
 import java.util.Scanner;
+import time.TimeService;
 
-public class LoginService03 {
+public class LoginService03 extends TimeService{
 	private LoginDTO03 login;
 	public LoginService03() {	//기본생성자
 		login = new LoginDTO03();
 	}
 	
-	public void display() {
+	public void display(){
 		Scanner sc = new Scanner(System.in);
 		String putid, putpwd;
 		boolean b = true;
@@ -35,6 +36,7 @@ public class LoginService03 {
 					putpwd = sc.next();
 					if(putpwd.equals(login.getPwd())) {
 						System.out.println("인증 통과~~~");
+						setStartTime();
 						break;
 					}else {
 						System.out.println("비밀번호 틀림");
@@ -86,6 +88,8 @@ public class LoginService03 {
 				}
 			case 4 :
 				System.out.println("프로그램을 종료합니다~~");
+				setEndTime();
+				System.out.println(getResultTime());
 				b = false;
 				break;
 			default : 
